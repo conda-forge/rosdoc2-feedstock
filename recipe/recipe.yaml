@@ -11,7 +11,7 @@ source:
   sha256: fbb2ba4d0d867590955963363bf24b969c6ed18c24d730845b38884736b8ccf7
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: python -m pip install . -vv --no-deps --no-build-isolation
   python:
@@ -36,13 +36,15 @@ requirements:
     - sphinx
     - sphinx-rtd-theme
     - myst-parser
-    - mdit-py-plugins 0.3.1.*
 
 tests:
   - python:
       pip_check: true
       imports:
         - rosdoc2
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
   - script:
       - rosdoc2 --help
 
